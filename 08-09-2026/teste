@@ -1,0 +1,12 @@
+programa {
+  funcao inicio() {
+    inteiro n1, antecessor, sucessor
+    escreva ("Informe um numero: ")
+    leia (n1)
+        antecessor = n1 - 1
+        sucessor = n1 + 1
+    escreva ("O antecessor de ", + n1 + " é " + antecessor + "\n")
+    escreva ("O sucessor de ", + n1 + " é " + sucessor)
+
+  }
+}
