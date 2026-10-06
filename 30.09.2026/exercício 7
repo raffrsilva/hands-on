@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int opcao;
+        int estudante;
+        double total = 0;
+        double desconto;
+        double valorFinal;
+
+        do {
+
+            System.out.println();
+            System.out.println("===== LANCHONETE =====");
+            System.out.println();
+            System.out.println("1 - Pizza         - R$ 30,00");
+            System.out.println("2 - Hambúrguer    - R$ 20,00");
+            System.out.println("3 - Batata        - R$ 12,00");
+            System.out.println("4 - Refrigerante  - R$ 8,00");
+            System.out.println("0 - Finalizar");
+            System.out.println();
+
+            System.out.print("Escolha uma opção: ");
+            opcao = sc.nextInt();
+
+            switch (opcao) {
+
+                case 1:
+                    total = total + 30;
+                    System.out.println("Pizza adicionada.");
+                    break;
+
+                case 2:
+                    total = total + 20;
+                    System.out.println("Hambúrguer adicionado.");
+                    break;
+
+                case 3:
+                    total = total + 12;
+                    System.out.println("Batata adicionada.");
+                    break;
+
+                case 4:
+                    total = total + 8;
+                    System.out.println("Refrigerante adicionado.");
+                    break;
+
+                case 0:
+                    System.out.println("Pedido finalizado.");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+            }
+
+        } while (opcao != 0);
+
+        if (total < 50) {
+
+            desconto = 0;
+
+            System.out.println("Sem desconto.");
+
+        } else if (total < 100) {
+
+            desconto = 0.05;
+
+            System.out.println("5% de desconto.");
+
+        } else {
+
+            System.out.println();
+            System.out.println("Você é estudante?");
+            System.out.println("1 - Sim");
+            System.out.println("2 - Não");
+
+            estudante = sc.nextInt();
+
+            if (estudante == 1) {
+
+                desconto = 0.15;
+                System.out.println("15% de desconto.");
+
+            } else {
+
+                desconto = 0.10;
+                System.out.println("10% de desconto.");
+            }
+        }
+
+        valorFinal = total - (total * desconto);
+
+        System.out.println();
+        System.out.printf("Valor total: R$ %.2f%n", total);
+        System.out.printf("Desconto: %.0f%%%n", desconto * 100);
+        System.out.printf("Valor final: R$ %.2f%n", valorFinal);
+
+        sc.close();
+    }
+}
