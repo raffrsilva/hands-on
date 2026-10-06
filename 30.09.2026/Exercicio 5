@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        double dinheiro;
+        int chuva;
+        int idade;
+
+        System.out.print("Quanto dinheiro você possui? ");
+        dinheiro = sc.nextDouble();
+
+        System.out.println();
+        System.out.println("Está chovendo?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+        chuva = sc.nextInt();
+
+        if (dinheiro < 20) {
+
+            System.out.println("Rolê em casa.");
+
+        } else if (dinheiro < 50) {
+
+            if (chuva == 1) {
+                System.out.println("Streaming + comida.");
+            } else if (chuva == 2) {
+                System.out.println("Praça ou parque.");
+            } else {
+                System.out.println("Opção inválida.");
+            }
+
+        } else if (dinheiro < 100) {
+
+            System.out.println("Cinema.");
+
+        } else {
+
+            System.out.print("Digite sua idade: ");
+            idade = sc.nextInt();
+
+            if (idade < 18) {
+                System.out.println("Shopping + cinema.");
+            } else {
+                System.out.println("Show, restaurante ou churrasco com a galera.");
+            }
+        }
+
+        sc.close();
+    }
+}
