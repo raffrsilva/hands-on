@@ -1,0 +1,53 @@
+
+import java.util.Scanner;
+
+public class Atividade07 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double salario;
+        double somaSalarios = 0;
+        double maiorSalario = 0;
+        int filhos;
+        int somaFilhos = 0;
+        int pessoas = 0;
+        int ate100 = 0;
+
+        System.out.print("Salário: ");
+        salario = sc.nextDouble();
+
+        while (salario >= 0) {
+            System.out.print("Número de filhos: ");
+            filhos = sc.nextInt();
+
+            somaSalarios += salario;
+            somaFilhos += filhos;
+            pessoas++;
+
+            if (pessoas == 1 || salario > maiorSalario) {
+                maiorSalario = salario;
+            }
+
+            if (salario <= 100) {
+                ate100++;
+            }
+
+            System.out.print("Salário: ");
+            salario = sc.nextDouble();
+        }
+
+        if (pessoas > 0) {
+            System.out.println("Média salarial: "
+                    + somaSalarios / pessoas);
+            System.out.println("Média de filhos: "
+                    + (double) somaFilhos / pessoas);
+            System.out.println("Maior salário: " + maiorSalario);
+            System.out.println("Percentual até R$ 100: "
+                    + (ate100 * 100.0 / pessoas) + "%");
+        } else {
+            System.out.println("Nenhuma pessoa foi cadastrada.");
+        }
+
+        sc.close();
+    }
+}
