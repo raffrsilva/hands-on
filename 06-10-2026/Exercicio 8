@@ -1,0 +1,18 @@
+
+public class Atividade08 {
+    public static void main(String[] args) {
+        double chico = 1.50;
+        double ze = 1.10;
+        int anos = 0;
+
+        while (ze <= chico) {
+            chico = chico + 0.02;
+            ze = ze + 0.03;
+            anos++;
+        }
+
+        System.out.println("Anos: " + anos);
+        System.out.printf("Altura de Chico: %.2f m%n", chico);
+        System.out.printf("Altura de Zé: %.2f m%n", ze);
+    }
+}
