@@ -1,0 +1,39 @@
+
+import java.util.Scanner;
+
+public class Atividade09 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int voto;
+        int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+        int nulos = 0, brancos = 0;
+
+        System.out.println("Digite o voto (0 encerra):");
+        voto = sc.nextInt();
+
+        while (voto != 0) {
+            switch (voto) {
+                case 1: c1++; break;
+                case 2: c2++; break;
+                case 3: c3++; break;
+                case 4: c4++; break;
+                case 5: nulos++; break;
+                case 6: brancos++; break;
+                default:
+                    System.out.println("Voto inválido.");
+            }
+
+            voto = sc.nextInt();
+        }
+
+        System.out.println("Candidato 1: " + c1);
+        System.out.println("Candidato 2: " + c2);
+        System.out.println("Candidato 3: " + c3);
+        System.out.println("Candidato 4: " + c4);
+        System.out.println("Votos nulos: " + nulos);
+        System.out.println("Votos em branco: " + brancos);
+
+        sc.close();
+    }
+}
