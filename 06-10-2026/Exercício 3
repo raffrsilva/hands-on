@@ -1,0 +1,22 @@
+
+import java.util.Scanner;
+
+public class Atividade03 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n;
+        int soma = 0;
+
+        System.out.print("Digite N: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            soma = soma + i;
+        }
+
+        System.out.println("Soma = " + soma);
+
+        sc.close();
+    }
+}
