@@ -1,0 +1,69 @@
+
+import java.util.Scanner;
+
+public class Atividade21 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double minimo = 1621.00;
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.print("Código: ");
+            int codigo = sc.nextInt();
+
+            System.out.print("Horas trabalhadas: ");
+            double horas = sc.nextDouble();
+
+            char turno;
+            do {
+                System.out.print("Turno (M/V/N): ");
+                turno = sc.next().toUpperCase().charAt(0);
+            } while (turno != 'M' && turno != 'V'
+                    && turno != 'N');
+
+            char categoria;
+            do {
+                System.out.print("Categoria (O/G): ");
+                categoria = sc.next().toUpperCase().charAt(0);
+            } while (categoria != 'O' && categoria != 'G');
+
+            double percentual;
+
+            if (categoria == 'G' && turno == 'N') {
+                percentual = 0.18;
+            } else if (categoria == 'G') {
+                percentual = 0.15;
+            } else if (turno == 'N') {
+                percentual = 0.13;
+            } else {
+                percentual = 0.10;
+            }
+
+            double valorHora = minimo * percentual;
+            double salarioInicial = horas * valorHora;
+            double auxilio;
+
+            if (salarioInicial <= 1080) {
+                auxilio = salarioInicial * 0.20;
+            } else if (salarioInicial <= 2160) {
+                auxilio = salarioInicial * 0.15;
+            } else {
+                auxilio = salarioInicial * 0.05;
+            }
+
+            double salarioFinal = salarioInicial + auxilio;
+
+            System.out.println("Código: " + codigo);
+            System.out.println("Horas: " + horas);
+            System.out.printf("Valor da hora: R$ %.2f%n",
+                    valorHora);
+            System.out.printf("Salário inicial: R$ %.2f%n",
+                    salarioInicial);
+            System.out.printf("Auxílio: R$ %.2f%n", auxilio);
+            System.out.printf("Salário final: R$ %.2f%n%n",
+                    salarioFinal);
+        }
+
+        sc.close();
+    }
+}
