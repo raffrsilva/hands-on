@@ -1,0 +1,53 @@
+
+import java.util.Scanner;
+
+public class Atividade20 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Quantidade de termos: ");
+        int n = sc.nextInt();
+
+        System.out.print("Digite X positivo: ");
+        double x = sc.nextDouble();
+
+        double soma = 0;
+        double potencia = x * x;
+        int denominador = 1;
+        int direcao = 1;
+
+        for (int i = 1; i <= n; i++) {
+            potencia *= x;
+
+            double fatorial = 1;
+
+            for (int j = 1; j <= denominador; j++) {
+                fatorial *= j;
+            }
+
+            double termo = potencia / fatorial;
+
+            if (i % 2 == 1) {
+                soma -= termo;
+            } else {
+                soma += termo;
+            }
+
+            if (direcao == 1) {
+                denominador++;
+                if (denominador == 4) {
+                    direcao = -1;
+                }
+            } else {
+                denominador--;
+                if (denominador == 1) {
+                    direcao = 1;
+                }
+            }
+        }
+
+        System.out.println("S = " + soma);
+
+        sc.close();
+    }
+}
