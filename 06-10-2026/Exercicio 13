@@ -1,1 +1,45 @@
 
+import java.util.Scanner;
+
+public class Atividade13 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int codigo;
+        int quantidade = 0;
+        double preco;
+        double somaAntes = 0;
+        double somaDepois = 0;
+
+        System.out.print("Código: ");
+        codigo = sc.nextInt();
+
+        while (codigo >= 0) {
+            System.out.print("Preço atual: ");
+            preco = sc.nextDouble();
+
+            double novoPreco = preco * 1.20;
+
+            System.out.printf("Código: %d | Novo preço: R$ %.2f%n",
+                    codigo, novoPreco);
+
+            somaAntes += preco;
+            somaDepois += novoPreco;
+            quantidade++;
+
+            System.out.print("Código: ");
+            codigo = sc.nextInt();
+        }
+
+        if (quantidade > 0) {
+            System.out.printf("Média antes: R$ %.2f%n",
+                    somaAntes / quantidade);
+            System.out.printf("Média depois: R$ %.2f%n",
+                    somaDepois / quantidade);
+        } else {
+            System.out.println("Nenhum produto informado.");
+        }
+
+        sc.close();
+    }
+}
