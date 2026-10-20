@@ -1,0 +1,24 @@
+
+import java.util.Scanner;
+
+public class Atividade06 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n;
+        double e = 1;
+        double fatorial = 1;
+
+        System.out.print("Digite N: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            fatorial = fatorial * i;
+            e = e + 1.0 / fatorial;
+        }
+
+        System.out.println("E = " + e);
+
+        sc.close();
+    }
+}
