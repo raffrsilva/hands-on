@@ -1,0 +1,40 @@
+
+import java.util.Scanner;
+
+public class vetorpSomar {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        int[] numeros = new int[6];
+        int somaPares = 0;
+        int quantidadeImpares = 0;
+
+        for (int i = 0; i < 6; i++) {
+            System.out.print("Digite um numero inteiro: ");
+            numeros[i] = entrada.nextInt();
+        }
+
+        System.out.println("Numeros pares:");
+        for (int i = 0; i < 6; i++) {
+            if (numeros[i] % 2 == 0) {
+                System.out.println(numeros[i]);
+                somaPares = somaPares + numeros[i];
+            }
+        }
+
+        System.out.println("Soma dos numeros pares: " + somaPares);
+
+        System.out.println("Numeros impares:");
+        for (int i = 0; i < 6; i++) {
+            if (numeros[i] % 2 != 0) {
+                System.out.println(numeros[i]);
+                quantidadeImpares++;
+            }
+        }
+
+        System.out.println("Quantidade de numeros impares: " + quantidadeImpares);
+
+        entrada.close();
+    }
+}
