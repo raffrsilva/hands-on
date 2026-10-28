@@ -1,0 +1,24 @@
+
+import java.util.Scanner;
+
+public class Nomenome {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        String[] nomes = new String[15];
+
+        for (int i = 0; i < 15; i++) {
+            System.out.print("Digite um nome: ");
+            nomes[i] = entrada.nextLine();
+        }
+
+        System.out.println("Nomes na ordem contraria:");
+
+        for (int i = 14; i >= 0; i--) {
+            System.out.println(nomes[i]);
+        }
+
+        entrada.close();
+    }
+}
