@@ -1,0 +1,45 @@
+
+import java.util.Scanner;
+
+public class ex2Vetor {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        int[] numeros = new int[8];
+        int[] positivos = new int[8];
+        int[] negativos = new int[8];
+
+        int p = 0;
+        int n = 0;
+
+        for (int i = 0; i < 8; i++) {
+            System.out.print("Digite um numero: ");
+            numeros[i] = entrada.nextInt();
+        }
+
+        for (int i = 0; i < 8; i++) {
+            if (numeros[i] > 0) {
+                positivos[p] = numeros[i];
+                p++;
+            }
+
+            if (numeros[i] < 0) {
+                negativos[n] = numeros[i];
+                n++;
+            }
+        }
+
+        System.out.println("Positivos:");
+        for (int i = 0; i < p; i++) {
+            System.out.println(positivos[i]);
+        }
+
+        System.out.println("Negativos:");
+        for (int i = 0; i < n; i++) {
+            System.out.println(negativos[i]);
+        }
+
+        entrada.close();
+    }
+}
