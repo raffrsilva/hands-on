@@ -1,0 +1,26 @@
+public class vetores {
+    public static void main(String[] args) {
+
+        int[] vetor1 = {3, 5, 4, 2, 2, 5, 3, 2, 5, 9};
+        int[] vetor2 = {7, 15, 20, 0, 18, 4, 55, 23, 8, 6};
+
+        int[] resultado = new int[20];
+
+        for (int i = 0; i < 10; i++) {
+            resultado[i * 2] = vetor1[i];
+            resultado[i * 2 + 1] = vetor2[i];
+        }
+
+        System.out.print("Intercalação: [");
+
+        for (int i = 0; i < resultado.length; i++) {
+            System.out.print(resultado[i]);
+
+            if (i < resultado.length - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println("]");
+    }
+}
