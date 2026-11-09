@@ -1,0 +1,232 @@
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner leia = new Scanner(System.in);
+        Random random = new Random();
+
+        String[] herois = {"Guerreiro", "Arqueiro", "Mago"};
+
+        int[] vidaInicial = {100, 80, 60};
+
+        int[] ataque = {20, 15, 25};
+
+        int[][] vida = {
+            {100, 80, 60},
+            {100, 80, 60}
+        };
+
+        int opcao = -1;
+        int jogador = 0;
+
+        boolean batalhaTerminada = false;
+
+        while (opcao != 0) {
+
+            System.out.println("\n================================");
+            System.out.println("       ARENA DOS HEROIS");
+            System.out.println("================================");
+            System.out.println("1 - Iniciar batalha");
+            System.out.println("2 - Consultar herois");
+            System.out.println("3 - Consultar status da batalha");
+            System.out.println("4 - Reiniciar jogo");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha uma opcao: ");
+
+            opcao = leia.nextInt();
+
+            switch (opcao) {
+
+                case 1:
+
+                    if (batalhaTerminada == true) {
+                        System.out.println("A batalha ja terminou! Reinicie o jogo.");
+                    } else {
+
+                        while ((vida[0][0] > 0 || vida[0][1] > 0 || vida[0][2] > 0) &&
+                               (vida[1][0] > 0 || vida[1][1] > 0 || vida[1][2] > 0)) {
+
+                            System.out.println("\n================================");
+
+                            if (jogador == 0) {
+                                System.out.println("VEZ DO JOGADOR 1");
+                            } else {
+                                System.out.println("VEZ DO JOGADOR 2");
+                            }
+
+                            System.out.println("================================");
+
+                            System.out.println("\nescolha seu heroi:");
+
+                            for (int i = 0; i < 3; i++) {
+                                System.out.println((i + 1) + " - " + herois[i] +
+                                        " - Vida: " + vida[jogador][i]);
+                            }
+
+                            System.out.print("Opcao: ");
+                            int atacante = leia.nextInt() - 1;
+
+                            while (atacante < 0 || atacante > 2 ||
+                                   vida[jogador][atacante] == 0) {
+
+                                System.out.println("Heroi invalido ou eliminado!");
+                                System.out.print("Escolha outro heroi: ");
+                                atacante = leia.nextInt() - 1;
+                            }
+
+                            int adversario;
+
+                            if (jogador == 0) {
+                                adversario = 1;
+                            } else {
+                                adversario = 0;
+                            }
+
+                            System.out.println("\nescolha o adversario:");
+
+                            for (int i = 0; i < 3; i++) {
+                                System.out.println((i + 1) + " - " + herois[i] +
+                                        " - Vida: " + vida[adversario][i]);
+                            }
+
+                            System.out.print("Opcao: ");
+                            int alvo = leia.nextInt() - 1;
+
+                            while (alvo < 0 || alvo > 2 ||
+                                   vida[adversario][alvo] == 0) {
+
+                                System.out.println("Adversario invalido ou eliminado!");
+                                System.out.print("Escolha outro adversario: ");
+                                alvo = leia.nextInt() - 1;
+                            }
+
+                            int dano = ataque[atacante];
+
+                            int chance = random.nextInt(100);
+
+                            if (chance < 20) {
+
+                                dano = dano * 2;
+
+                                System.out.println("\nATAQUE CRITICO!");
+
+                            }
+
+                            vida[adversario][alvo] =
+                                    vida[adversario][alvo] - dano;
+
+                            if (vida[adversario][alvo] < 0) {
+                                vida[adversario][alvo] = 0;
+                            }
+
+                            System.out.println("\n______________________________");
+                            System.out.println("          RESULTADO");
+                            System.out.println("_________________________________");
+
+                            System.out.println(herois[atacante] + " atacou " +
+                                    herois[alvo] + "!");
+
+                            System.out.println("Dano causado: " + dano);
+
+                            System.out.println("Vida restante do " +
+                                    herois[alvo] + ": " + vida[adversario][alvo]);
+
+                            if (vida[adversario][alvo] == 0) {
+                                System.out.println("Heroi eliminado!");
+                            }
+
+                            System.out.println("_________________________________");
+
+                            if (jogador == 0) {
+                                jogador = 1;
+                            } else {
+                                jogador = 0;
+                            }
+                        }
+
+                        if (vida[0][0] == 0 && vida[0][1] == 0 &&
+                            vida[0][2] == 0) {
+
+                            System.out.println("\nJOGADOR 2 VENCEU!");
+
+                        } else {
+
+                            System.out.println("\nJOGADOR 1 VENCEU!");
+                        }
+
+                        batalhaTerminada = true;
+                    }
+
+                    break;
+
+                case 2:
+
+                    System.out.println("\n________________________________");
+                    System.out.println("       CONSULTA DE HEROIS");
+                    System.out.println("_____________________________________");
+
+                    for (int i = 0; i < 3; i++) {
+
+                        System.out.println("\nHeroi: " + herois[i]);
+                        System.out.println("Vida inicial: " + vidaInicial[i]);
+                        System.out.println("Poder de ataque: " + ataque[i]);
+
+                    }
+
+                    break;
+
+                case 3:
+
+                    System.out.println("\n_________________________________");
+                    System.out.println("       STATUS DA BATALHA");
+                    System.out.println("_____________________________________");
+
+                    System.out.println("\nJOGADOR 1:");
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println(herois[i] + " - Vida: " + vida[0][i]);
+                    }
+
+                    System.out.println("\nJOGADOR 2:");
+
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println(herois[i] + " - Vida: " + vida[1][i]);
+                    }
+
+                    break;
+
+                case 4:
+
+                    for (int i = 0; i < 3; i++) {
+                        vida[0][i] = vidaInicial[i];
+                        vida[1][i] = vidaInicial[i];
+                    }
+
+                    jogador = 0;
+                    batalhaTerminada = false;
+
+                    System.out.println("\nJogo reiniciado com sucesso!");
+
+                    break;
+
+                case 0:
+
+                    System.out.println("\nSaindo do jogo...");
+
+                    break;
+
+                default:
+
+                    System.out.println("\nOpcao invalida!");
+
+                    break;
+            }
+        }
+
+        leia.close();
+    }
+}
